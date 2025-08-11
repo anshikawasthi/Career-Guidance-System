@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% include "header.html" %}
+</head>
+<body>
+    {% include "menu2.html" %}
+    <div class="register-form-main">
+        <div class="container">
+            <div class="title-div">
+                <h3 class="tittle">
+                    <span>P</span>ost <span>S</span>cholarship
+                </h3>
+                <div class="tittle-style" align="center">
+                    <p style="color: red; size: 50px;">{{ message }}</p>
+                </div>
+            </div>
+            <div class="login-form">
+                <form name="form" action="/post-scholarship-action/" method="get">
+                    {% csrf_token %}
+
+                    <div class="">
+                        <p>Name</p>
+                        <input type="text" class="name" name="name" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>State or Central</p>
+                        <input type="text" class="name" name="stateorcentral" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>10th Percentage</p>
+                        <input type="text" class="name" name="tenthper" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>12th Percentage</p>
+                        <input type="text" class="name" name="twelvethper" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>Caste</p>
+                        <input type="text" class="name" name="cast" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>Sport</p>
+                        <input type="text" class="name" name="sport" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>Gender</p>
+                        <select class="name" name="gender" required="required">
+                            <option value="">--select--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <p>Income</p>
+                        <input type="text" class="name" name="income" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>Disability</p>
+                        <select class="name" name="isdisable" required="required">
+                            <option value="">--select--</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <p>Last Date</p>
+                        <input type="date" class="name" name="lastdate" required="required" />
+                    </div>
+
+                    <br />
+                    <input type="submit" value="Post Scholarship">
+                </form>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% include "header.html" %}
+</head>
+<body>
+	{% include "menu2.html" %}
+	<div class="register-form-main">
+		<div class="container">
+			<div class="title-div">
+				<h3 class="tittle">
+					<span>V</span>iew <span>C</span>ourses
+				</h3>
+				<div class="tittle-style" align="center">
+					<p style="color: red; size: 50px;">{{message}}</p>
+				</div>
+			</div>
+			<table id="customers">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Base Course</th>
+                    <th>View Tests</th>
+                    <th>Learn Course Skills</th>
+                    {% if request.session.role in "admin" %}
+                        <th>Add Test</th>
+                        <th>Delete</th>
+                    {% endif %}
+                </tr>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.base }}</td>
+                        <td><a href="{{ course.website_link}}" target="_blank">Learn Skills</a></td>
+                        <td><a href="/gettestsbycourse?courseid={{ course.id }}">View Tests</a></td>
+                        {% if request.session.role in "admin" %}
+                            <td><a href="/posttest?courseid={{ course.id }}">Add Test</a></td>
+                            <td><a href="/deletecourse?course={{ course.id }}">Delete</a></td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+		</div>
+	</div>
+	{% include "footer.html" %}
+</body>
+</html>

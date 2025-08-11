@@ -1,0 +1,45 @@
+<!-- header -->
+<div class="header-top">
+	<div class="container">
+
+		{% if request.session.role in "admin" %}
+			<a href="/postcourse"><font color="white">Post Course</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% endif %}
+
+		{% if request.session.role in "student" %}
+			<a href="/jobroleprediction"><font color="white">Predict Career</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% endif %}
+
+		<a href="/getcoursesbycategory?type=10th"><font color="white">Courses After 10th</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<a href="/getcoursesbycategory?type=12th"><font color="white">Courses After 12th</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		{% if request.session.role in "admin" %}
+			<a href="/post-scholarship"><font color="white">Post Scholarship</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+			<a href="/post-soft-skill"><font color="white">Post SoftSkills</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% endif %}
+
+		<a href="/get-scholarships"><font color="white">Scholarships</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<a href="/get-soft-skills"><font color="white">SoftSkills</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		{% if request.session.role in "student" %}
+			<a href="/consultation"><font color="white">Consultation</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% endif %}
+
+		<a href="/logout"><font color="white">Logout</font></a>
+
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- banner -->

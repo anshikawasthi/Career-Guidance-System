@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% include "header.html" %}
+</head>
+<body>
+	
+	{% include "menu2.html" %}
+	<div class="register-form-main">
+		<div class="container">
+			<div class="title-div">
+				<h3 class="tittle">
+					<span>V</span>iew <span>S</span>cholarships
+				</h3>
+				<div class="tittle-style" align="center">
+					<p style="color: red; size: 50px;">{{ message }}</p>
+				</div>
+			</div>
+
+			<table id="customers">
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>10th %</th>
+					<th>12th %</th>
+					<th>Caste</th>
+					<th>Sport</th>
+					<th>Gender</th>
+					<th>Income</th>
+					<th>Disability</th>
+					<th>Last Date</th>
+					{% if request.session.role == "admin" %}
+						<th>Delete</th>
+					{% endif %}
+				</tr>
+
+				{% for scholarship in scholarships %}
+				<tr>
+					<td>{{ scholarship.name }}</td>
+					<td>{{ scholarship.stateorcentral }}</td>
+					<td>{{ scholarship.tenthper }}</td>
+					<td>{{ scholarship.twelvethper }}</td>
+					<td>{{ scholarship.cast }}</td>
+					<td>{{ scholarship.sport }}</td>
+					<td>{{ scholarship.gender }}</td>
+					<td>{{ scholarship.income }}</td>
+					<td>{{ scholarship.isdisable }}</td>
+					<td>{{ scholarship.lastdate }}</td>
+					{% if request.session.role == "admin" %}
+						<td><a href="/delete-scholarship?scholarship={{ scholarship.id }}">Delete</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div><!--Start of Conferbot Script-->
+    <script type="text/javascript">
+      (function (d, s, id) {
+        var js, el = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.async = true;
+        js.src = 'https://s3.ap-south-1.amazonaws.com/conferbot.defaults/dist/v1/widget.min.js';
+        js.id = id;
+        js.charset = 'UTF-8';
+        el.parentNode.insertBefore(js, el);
+        js.onload = function () {
+          var w = window.ConferbotWidget("667ed7fc4787865257960884", "popup_chat");
+        };
+      })(document, 'script', 'conferbot-js');
+    </script>
+    <!--End of Conferbot Script-->
+	{% include "footer.html" %}
+	
+</body>
+
+</html>

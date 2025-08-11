@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% include "header.html" %}
+</head>
+<body>
+	{% include "menu2.html" %}
+	<div class="register-form-main">
+		<div class="container">
+			<div class="title-div">
+				<h3 class="tittle">
+					<span>V</span>ivew <span>T</span>ests
+				</h3>
+				<div class="tittle-style" align="center">
+					<p style="color: red; size: 50px;">{{message}}</p>
+				</div>
+			</div>
+			<table id="customers">
+                <tr>
+                    <th>Test Name</th>
+
+                    {% if request.session.role in "student" %}
+                        <th>Write Test</th>
+                    {% endif %}
+
+                    {% if request.session.role in "admin" %}
+                        <th>View Questions</th>
+                        <th>Add Question</th>
+                        <th>Delete</th>
+                    {% endif %}
+                </tr>
+                {% for test in tests %}
+                    <tr>
+                        <td>{{ test.name }}</td>
+
+                        {% if request.session.role in "student" %}
+                             <td><a href="/starttest?testid={{ test.id }}">Write Test</a></td>
+                        {% endif %}
+
+                        {% if request.session.role in "admin" %}
+                            <td><a href="/getquestionsbytest?testid={{ test.id }}">View Questions</a></td>
+                            <td><a href="/postquestion?testid={{ test.id }}">Add Question</a></td>
+                            <td><a href="/deletetest?test={{ test.id }}">Delete</a></td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+		</div>
+	</div>
+	{% include "footer.html" %}
+</body>
+</html>

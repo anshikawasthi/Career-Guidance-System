@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% include "header.html" %}
+</head>
+<body>
+	{% include "menu2.html" %}
+	<div class="register-form-main">
+		<div class="container">
+			<div class="title-div">
+				<h3 class="tittle">
+					<span>S</span>ubmit <span>C</span>onsultation
+				</h3>
+				<div class="tittle-style" align="center">
+					<p style="color: red;">{{ message }}</p>
+				</div>
+			</div>
+			<div class="login-form">
+				<form name="form" method="POST" action="/submitconsultation/">
+					{% csrf_token %}
+					<div class="">
+						<p>Your Name</p>
+						<input type="text" class="name" name="name" required />
+					</div>
+
+					<div class="">
+						<p>Email</p>
+						<input type="email" class="name" name="email" required />
+					</div>
+
+					<div class="">
+						<p>Message</p>
+						<textarea name="message" class="name" rows="4" required style="width:100%;"></textarea>
+					</div>
+
+					<br />
+					<input type="submit" value="Submit Consultation" />
+				</form>
+			</div>
+		</div>
+	</div>
+	{% include "footer.html" %}
+</body>
+</html>

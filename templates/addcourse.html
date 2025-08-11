@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{% include "header.html" %}
+</head>
+<body>
+	{% include "menu2.html" %}
+	<div class="register-form-main">
+		<div class="container">
+			<div class="title-div">
+				<h3 class="tittle">
+					<span>P</span>ost <span>C</span>ourse
+				</h3>
+				<div class="tittle-style" align="center">
+					<p style="color: red; size: 50px;">{{message}}</p>
+				</div>
+			</div>
+			<div class="login-form">
+				<form name="form" action="/postcourseaction">
+                    {% csrf_token %}
+					<div class="">
+						<p>Course Name</p>
+						<input type="text" class="name" name="name" required="required"/>
+					</div>
+
+					<div class="">
+						<p>Link to Learn Required Skills</p>
+						<input type="url" class="name" name="website_link" required="required" style="width:100%;"/>
+					</div>
+
+					<div class="">
+						<p>Select Base Course</p>
+						<select class="name" name="base" required="required" style="width:100%;">
+                            <option value="">--select--</option>
+                            <option value="10th">10TH</option>
+                            <option value="12th">12TH</option>
+                        </select>
+					</div>
+
+					<br />
+					<input type="submit" value="Post Course">
+				</form>
+			</div>
+		</div>
+	</div>
+	{% include "footer.html" %}
+</body>
+</html>

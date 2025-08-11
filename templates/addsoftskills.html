@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% include "header.html" %}
+</head>
+<body>
+    {% include "menu2.html" %}
+    <div class="register-form-main">
+        <div class="container">
+            <div class="title-div">
+                <h3 class="tittle">
+                    <span>P</span>ost <span>S</span>oft Skill
+                </h3>
+                <div class="tittle-style" align="center">
+                    <p style="color: red; size: 50px;">{{ message }}</p>
+                </div>
+            </div>
+            <div class="login-form">
+                <form name="form" action="/post-soft-skill-action/" method="get">
+                    {% csrf_token %}
+
+                    <div class="">
+                        <p>Soft Skill Title</p>
+                        <input type="text" class="name" name="title" required="required" />
+                    </div>
+
+                    <div class="">
+                        <p>Video/Resource Link</p>
+                        <input type="text" class="name" name="link" required="required" />
+                    </div>
+
+                    <br />
+                    <input type="submit" value="Post Soft Skill">
+                </form>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>
